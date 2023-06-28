@@ -6,7 +6,9 @@
  */
 package org.dazzler.quiz.service.impl;
 
+import org.dazzler.quiz.repo.QuestionRepo;
 import org.dazzler.quiz.service.QuestionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,4 +16,7 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 public class QuestionServiceImpl implements QuestionService {
+
+    @Autowired
+    QuestionRepo questionRepo;
 }
