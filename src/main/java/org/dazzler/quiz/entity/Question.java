@@ -18,7 +18,7 @@ import javax.persistence.Id;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String id;
+    private Integer id;
     private String questionText;
     private String optionOne;
     private String optionTwo;

@@ -16,7 +16,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class QuestionDTO {
-    private String id;
+    private Integer id;
     private String questionText;
     private String optionOne;
     private String optionTwo;
