@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional
@@ -30,6 +31,12 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public ArrayList<QuestionDTO> loadAllQuestion() {
         return mapper.map(repo.findAll(), new TypeToken<ArrayList<QuestionDTO>>() {
+        }.getType());
+    }
+
+    @Override
+    public List<QuestionDTO> getQuestionByTechnology(String technology) {
+        return mapper.map(repo.findAllByTechnology(technology), new TypeToken<ArrayList<QuestionDTO>>() {
         }.getType());
     }
 }

@@ -10,6 +10,7 @@ import org.dazzler.quiz.dto.QuestionDTO;
 import org.dazzler.quiz.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,5 +26,10 @@ public class QuestionController {
     @GetMapping("/all")
     public List<QuestionDTO> getAllQuestions(){
         return questionService.loadAllQuestion();
+    }
+
+    @GetMapping("technology/{technology}")
+    public List<QuestionDTO> getQuestionByTechnology(@PathVariable String technology){
+        return questionService.getQuestionByTechnology(technology);
     }
 }
