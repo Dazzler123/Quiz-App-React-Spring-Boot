@@ -7,6 +7,11 @@
 package org.dazzler.quiz.service.impl;
 
 import org.dazzler.quiz.service.QuestionService;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
+@Service
+@Transactional
 public class QuestionServiceImpl implements QuestionService {
 }
