@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface QuestionService {
-    ResponseEntity<ArrayList<QuestionDTO>> loadAllQuestion();
+    ArrayList<QuestionDTO> loadAllQuestion();
 
     List<QuestionDTO> getQuestionByTechnology(String technology);
 

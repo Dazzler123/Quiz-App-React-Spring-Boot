@@ -32,9 +32,9 @@ public class QuestionServiceImpl implements QuestionService {
     QuestionRepo repo;
 
     @Override
-    public ResponseEntity<ArrayList<QuestionDTO>> loadAllQuestion() {
-        return new ResponseEntity<>(mapper.map(repo.findAll(), new TypeToken<ArrayList<QuestionDTO>>() {
-        }.getType()), HttpStatus.OK);
+    public ArrayList<QuestionDTO> loadAllQuestion() {
+        return mapper.map(repo.findAll(), new TypeToken<ArrayList<QuestionDTO>>() {
+        }.getType());
     }
 
     @Override
@@ -45,7 +45,11 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public boolean saveQuestion(QuestionDTO questionDTO) {
-        repo.save(mapper.map(questionDTO, Question.class));
-        return true;
+        if(repo.existsById(String.valueOf(questionDTO.getId()))){
+            throw new RuntimeException("Question already exists!");
+        } else {
+            repo.save(mapper.map(questionDTO, Question.class));
+            return true;
+        }
     }
 }
