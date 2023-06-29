@@ -9,8 +9,10 @@ package org.dazzler.quiz.controller;
 import org.dazzler.quiz.dto.QuestionDTO;
 import org.dazzler.quiz.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,7 +23,7 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping("/all")
-    public List<QuestionDTO> getAllQuestions() {
+    public ResponseEntity<ArrayList<QuestionDTO>> getAllQuestions() {
         return questionService.loadAllQuestion();
     }
 
