@@ -8,6 +8,7 @@ package org.dazzler.quiz.controller;
 
 import org.dazzler.quiz.dto.QuestionDTO;
 import org.dazzler.quiz.service.QuestionService;
+import org.dazzler.quiz.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,17 +24,17 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping("/all")
-    public ResponseEntity<ArrayList<QuestionDTO>> getAllQuestions() {
-        return questionService.loadAllQuestion();
+    public ResponseUtil getAllQuestions() {
+        return new ResponseUtil("200","All Questions Loaded.",questionService.loadAllQuestion());
     }
 
     @GetMapping("technology/{technology}")
-    public List<QuestionDTO> getQuestionByTechnology(@PathVariable String technology) {
-        return questionService.getQuestionByTechnology(technology);
+    public ResponseUtil getQuestionByTechnology(@PathVariable String technology) {
+        return new ResponseUtil("200","Questions filtered by technology loaded.",questionService.getQuestionByTechnology(technology));
     }
 
     @PostMapping("/add")
-    public boolean addNewQuestion(@RequestBody QuestionDTO questionDTO) {
-        return questionService.saveQuestion(questionDTO);
+    public ResponseUtil addNewQuestion(@RequestBody QuestionDTO questionDTO) {
+        return new ResponseUtil("201","New Question saved.",questionService.saveQuestion(questionDTO));
     }
 }
