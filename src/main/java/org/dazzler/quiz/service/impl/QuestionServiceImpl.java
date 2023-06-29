@@ -7,6 +7,7 @@
 package org.dazzler.quiz.service.impl;
 
 import org.dazzler.quiz.dto.QuestionDTO;
+import org.dazzler.quiz.entity.Question;
 import org.dazzler.quiz.repo.QuestionRepo;
 import org.dazzler.quiz.service.QuestionService;
 import org.modelmapper.ModelMapper;
@@ -38,5 +39,11 @@ public class QuestionServiceImpl implements QuestionService {
     public List<QuestionDTO> getQuestionByTechnology(String technology) {
         return mapper.map(repo.findAllByTechnology(technology), new TypeToken<ArrayList<QuestionDTO>>() {
         }.getType());
+    }
+
+    @Override
+    public boolean saveQuestion(QuestionDTO questionDTO) {
+        repo.save(mapper.map(questionDTO, Question.class));
+        return true;
     }
 }

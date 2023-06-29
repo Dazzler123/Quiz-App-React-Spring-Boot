@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface QuestionService {
-    public ArrayList<QuestionDTO> loadAllQuestion();
+    ArrayList<QuestionDTO> loadAllQuestion();
 
     List<QuestionDTO> getQuestionByTechnology(String technology);
+
+    boolean saveQuestion(QuestionDTO questionDTO);
 }

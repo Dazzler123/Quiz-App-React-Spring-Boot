@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface QuestionRepo extends JpaRepository<Question, String> {
-    public List<Question> findAllByTechnology(String technology);
+     List<Question> findAllByTechnology(String technology);
 }
