@@ -6,10 +6,17 @@
  */
 package org.dazzler.quiz.controller;
 
+import org.dazzler.quiz.util.ResponseUtil;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/quiz")
 public class QuizController {
+    @PostMapping("create")
+    public ResponseUtil createNewQuiz(@RequestParam String technology, @RequestParam int questionCount, @RequestParam String title){
+        return new ResponseUtil("200","Method Called.",title);
+    }
 }
