@@ -6,6 +6,7 @@
  */
 package org.dazzler.quiz.service.impl;
 
+import org.dazzler.quiz.repo.QuizRepo;
 import org.dazzler.quiz.service.QuizService;
 import org.dazzler.quiz.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
@@ -20,6 +21,9 @@ public class QuizServiceImpl implements QuizService {
 
     @Autowired
     ModelMapper mapper;
+
+    @Autowired
+    QuizRepo quizRepo;
 
     @Override
     public ResponseUtil createNewQuiz(String technology, int questionCount, String title) {
